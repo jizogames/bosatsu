@@ -1,0 +1,13 @@
+name = "Bosatsu"
+license = "MIT"
+licenselink = "https://github.com/jizogames/bosatsu/blob/main/LICENSE"
+description = "Jizo Games Original Theme"
+homepage = "https://gihub.com/jizogames/bosatsu/"
+demosite = "https://jizogames.com/"
+tags = ["blog", "responsive"]
+features = []
+min_version = "0.146.0"
+
+[author]
+  name = "Jizo Games"
+  homepage = "https://jizogames.com"
