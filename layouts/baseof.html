@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
-<head>
-  {{ partial "head.html" . }}
+<html lang="{{ default .Site.Language.Lang .Site.Language.LanguageCode }}">
+<head prefix="og: https://ogp.me/ns#">
+    {{ partial "head.html" . }}
 </head>
 <body>
-  <header>
-    {{ partial "header.html" . }}
-  </header>
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
+    <nav class="skip-link" aria-label="スキップリンク">
+        <a href="#main">メインコンテンツまでスキップ</a>
+    </nav>
+    <header id="js-global-header" class="global-header" aria-label="ページヘッダー">
+        {{ partial "header.html" . }}
+    </header>
+    <main id="main" class="main-contents" role="main">
+        {{ block "main" . }}{{ end }}
+    </main>
+    <footer class="global-footer" aria-label="ページフッター">
+        {{ partial "footer.html" . }}
+    </footer>
 </body>
 </html>
