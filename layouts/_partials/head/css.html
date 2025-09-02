@@ -4,12 +4,6 @@
 {{- $cssFiles = $cssFiles | append (resources.Match "css/**/*.css") }}
 {{- $styles := $cssFiles | resources.Concat "css/style.css" }}
 
-{{- if hugo.IsDevelopment }}
-    {{- range $cssFiles }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}">
-    {{- end }}
-{{- else }}
-    {{- with $styles | minify | fingerprint }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
+{{- with $styles | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
 {{- end }}
