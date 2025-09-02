@@ -1,0 +1,145 @@
+.global-footer {
+    padding-block-end: 24px;
+    padding-inline: 8px;
+    position: sticky;
+    top: 100%;
+}
+
+.footer-contents {
+    display: grid;
+    padding-block: 24px;
+    row-gap: 24px;
+
+    &.bottom {
+        border-top: 1px solid;
+        font-size: 14px;
+    }
+}
+
+.copyright {
+    display: grid;
+    justify-content: center;
+    margin-inline: 8px;
+
+    small {
+        font-size: 14px;
+    }
+}
+
+@scope (.footer-contents) {
+    .site-logo {
+        height: 48px;
+        margin-inline: auto;
+        width: 192px;
+    }
+
+    .cta {
+        display: grid;
+        row-gap: 12px;
+
+        .btn {
+            background-color: #007b43;
+            border: 1px solid;
+            border-radius: calc(infinity * 1px);
+            box-shadow: 0 4px 6px #999999;
+            color: #ffffff;
+            display: grid;
+            justify-items: center;
+            padding-block: 14px;
+            transition-duration: 0.3s;
+            transition-property: box-shadow, translate;
+            width: stretch;
+
+            &:focus-visible {
+                box-shadow: 0 0 6px #999999;
+                outline: none;
+                translate: 0 4px;
+            }
+
+            @media (any-hover: hover) {
+                &:hover {
+                    box-shadow: 0 0 6px #999999;
+                    translate: 0 4px;
+                }
+            }
+        }
+    }
+
+    .social-links {
+        --icon-x: url("../images/sns/x.svg");
+        --icon-instagram: url("../images/sns/instagram.svg");
+        --icon-github: url("../images/sns/github.svg");
+
+        column-gap: 24px;
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: center;
+
+        li {
+            a {
+                border-radius: 8px;
+                display: grid;
+                padding: 12px;
+                transition-duration: 0.3s;
+                transition-property: background-color, color;
+                width: 48px;
+
+                &::before {
+                    aspect-ratio: 1;
+                    background-color: currentColor;
+                    content: "";
+                    display: block;
+                    height: auto;
+                    mask: var(--icon) no-repeat center / contain;
+                    width: 100%;
+                }
+
+                &:focus-visible {
+                    background-color: #007b43;
+                    color: #ffffff;
+                    outline: none;
+                }
+
+                @media (any-hover: hover) {
+                    &:hover {
+                        background-color: #007b43;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@scope (.bottom) {
+    nav {
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+
+            li {
+                white-space: nowrap;
+
+                a {
+                    display: block;
+                    padding-block: 6px;
+
+                    &:focus-visible {
+                        outline: none;
+                        text-decoration: underline;
+                        text-underline-offset: 0.25em;      
+                    }
+
+                    @media (any-hover: hover) {
+                        &:hover {
+                            text-decoration: underline;
+                            text-underline-offset: 0.25em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

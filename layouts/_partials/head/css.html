@@ -2,7 +2,7 @@
 
 {{- $cssFiles := resources.Match "css/*.css" }}
 {{- $cssFiles = $cssFiles | append (resources.Match "css/**/*.css") }}
-{{- $styles := $cssFiles | resources.Concat "cs/style.css" }}
+{{- $styles := $cssFiles | resources.Concat "css/style.css" }}
 
 {{- if hugo.IsDevelopment }}
     {{- range $cssFiles }}
