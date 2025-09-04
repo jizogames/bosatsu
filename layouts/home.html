@@ -1,7 +1,38 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+    {{ .Content }}
+    <section class="top-section">
+        {{ with .Site.GetPage "section" "posts" }}
+            <hgroup class="top-section-ttl">
+                <h2>{{ .Title }}</h2>
+                {{ with .Params.subtitle }}
+                    <p>{{ . }}</p>
+                {{ end }}
+            </hgroup>
+        {{ end }}
+        <div class="post-list">
+            {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
+                <article class="list-item">
+                    <a href="{{ .RelPermalink }}" class="list-body">
+                        <h3>{{ .Title }}</h3>
+                        {{ with .Resources.GetMatch .Params.thumbnail }}
+                            <figure class="thumbnail">
+                                <img src="{{ .RelPermalink }}" alt="{{ .Title }}">
+                            </figure>
+                        {{ end }}
+                        {{ .Summary }}
+                    </a>
+                    <div class="list-footer">
+                        {{ with .Params.categories }}
+                            <div class="categories">
+                                {{ range . }}
+                                    <a href="{{ (printf "/categories/%s/" ( . | urlize)) | relURL }}">{{ . }}</a>
+                                {{ end }}
+                            </div>
+                        {{ end }}
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time>
+                    </div>
+                </article>
+            {{ end }}
+        </div>
+    </section>
 {{ end }}
