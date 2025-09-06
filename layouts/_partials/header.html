@@ -1,2 +1,14 @@
 <h1>{{ site.Title }}</h1>
 {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<button id="js-openDrawer" class="menu-button" type="button">
+    <span class="icon hamburger"></span>
+    <span class="label">MENU</span>
+</button>
+
+<dialog id="js-menuDrawer" class="menu-drawer" autofocus>
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+    <button id="js-closeDrawer" type="button" aria-labelledby="closeDrawerLabel">
+        <span class="icon cross"></span>
+        <span id="closeDrawerLabel" style="display: none;">メニューをとじる</span>
+    </button>
+</dialog>
