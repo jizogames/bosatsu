@@ -1,4 +1,9 @@
 {{ define "main" }}
+    <nav class="breadcrumb">
+        <ol>
+            <li><a href="{{ .Site.BaseURL }}">Home</a></li>
+        </ol>
+    </nav>
     <article class="post">
         <header class="post-header">
             <h1 id="post-title" class="post-title">{{ .Title }}</h1>
@@ -12,6 +17,14 @@
             <figure class="thumbnail">
                 <img src="{{ .RelPermalink }}" alt="{{ .Title }}">
             </figure>
+        {{ end }}
+        {{ if eq .Type "posts" }}
+            {{ if .TableOfContents }}
+                <div id="js-toc" class="toc">
+                    <h2>目次</h2>
+                    {{ .TableOfContents }}
+                </div>
+            {{ end }}
         {{ end }}
         <div class="post-body">
             {{ .Content }}

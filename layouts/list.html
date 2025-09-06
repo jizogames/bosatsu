@@ -1,0 +1,46 @@
+{{ define "main" }}
+    <h2 id="page-title" class="page-title">「{{ .Title }}」の記事一覧</h2>
+    {{ $paginator := .Paginate (where .Pages "Type" "posts") 10 }}
+    <div class="post-list">
+        {{ range $paginator.Pages }}
+            <article class="list-item">
+                <a href="{{ .RelPermalink }}">
+                    <h3>{{ .LinkTitle }}</h3>
+                    {{ with .Resources.GetMatch .Params.thumbnail }}
+                        <figure class="thumbnail">
+                            <img src="{{ .RelPermalink }}" alt="{{ .Title }}">
+                        </figure>
+                    {{ end }}
+                    {{ .Summary }}
+                </a>
+                <div class="list-footer">
+                    {{ with .Params.categories }}
+                        <div class="categories">
+                            {{ range . }}
+                                <a href="{{ (printf "/categories/%s/" ( . | urlize)) | relURL }}">{{ . }}</a>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time>
+                </div>
+            </article>
+        {{ end }}
+    </div>
+    <nav class="pagination">
+        {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}">Prev</a>
+        {{ end }}
+
+        {{ range $paginator.Pagers }}
+            {{ if eq . $paginator }}
+                <span class="current">{{ .PageNumber }}</span>
+            {{ else }}
+                <a href="{{ .URL }}">{{ .PageNumber }}</a>
+            {{ end }}
+        {{ end }}
+
+        {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}">Next</a>
+        {{ end }}
+    </nav>
+{{ end }}
