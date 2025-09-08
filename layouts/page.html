@@ -1,11 +1,13 @@
 {{ define "main" }}
-    <ol class="breadcrumb">
-        <li><a href="{{ .Site.BaseURL }}">ホーム</a></li>
-        {{ with index .Params.categories 0 }}
-            <li><a href="/categories/{{ . | urlize }}">{{ . }}</a></li>
-        {{ end }}
-        <li>{{ .Title }}</li>
-    </ol>
+    {{ if eq .Type "posts" }}
+        <ol class="breadcrumb">
+            <li><a href="{{ .Site.BaseURL }}">ホーム</a></li>
+            {{ with index .Params.categories 0 }}
+                <li><a href="/categories/{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+            <li>{{ .Title }}</li>
+        </ol>
+    {{ end }}
     <article class="post">
         <header class="post-header">
             <h1 id="post-title" class="post-title">{{ .Title }}</h1>

@@ -7,6 +7,25 @@ document.addEventListener( 'DOMContentLoaded', () => {
         if ( !header ) return;
 
         getHeaderHeight( header );
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0
+        }
+        const scrollObserver = new IntersectionObserver( ( entries ) => {
+            const entry = entries[0];
+            if ( !entry.isIntersecting ) {
+                document.body.classList.add( 'scroll' );
+            } else {
+                document.body.classList.remove( 'scroll' );
+            }
+        }, options );
+
+        const target = document.getElementById( 'js-hero') || header;
+        if ( target ) {
+            scrollObserver.observe( target );
+        }
     } )();
 
     /**
@@ -25,28 +44,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
             drawer.close();
         } );
     } )();
-
-    /**
-     * スクロールを監視する.
-     */
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0
-    }
-    const scrollObserver = new IntersectionObserver( ( entries ) => {
-        const entry = entries[0];
-        if ( !entry.isIntersecting ) {
-            document.body.classList.add( 'scroll' );
-        } else {
-            document.body.classList.remove( 'scroll' );
-        }
-    }, options );
-
-    const target = document.getElementById( 'js-hero' ) || header;
-    if ( target ) {
-        scrollObserver.observe( target );
-    }
 } );
 
 function getHeaderHeight( header ) {

@@ -1,0 +1,42 @@
+.skip-link {
+    --padding: 8px;
+
+    font-size: 1rem;
+    left: calc(var(--padding) / 2);
+    position: fixed;
+    top: calc(var(--padding) / 2);
+    z-index: var(--stack-foreground);
+
+    &:not(:focus-within) {
+        block-size: 1px;
+        inline-size: 1px;
+        opacity: 0;
+        overflow: clip;
+        pointer-events: none;
+    }
+
+    a {
+        align-items: center;
+        background-color: #007b43;
+        border-radius: 8px;
+        color: #ffffff;
+        column-gap: var(--padding);
+        display: grid;
+        grid-template-columns: auto 10px;
+        padding: var(--padding);
+        text-decoration: none;
+
+        &::after {
+            background-color: currentColor;
+            clip-path: polygon(0 0, 100% 50%, 0 100%);
+            content: "";
+            display: block;
+            height: 12px;
+            width: 10px;
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
