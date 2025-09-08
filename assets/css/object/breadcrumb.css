@@ -1,33 +1,35 @@
-.breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 1rem;
-    gap: 4px 8px;
-    padding-inline: 8px;
+@layer object {
+    .breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1rem;
+        gap: 4px 8px;
+        padding-inline: 8px;
 
-    li {
-        display: grid;
+        li {
+            display: grid;
 
-        &:not(:last-of-type) {
-            align-items: center;
-            column-gap: 8px;
-            grid-template-columns: auto 1fr;
-            position: relative;
+            &:not(:last-of-type) {
+                align-items: center;
+                column-gap: 8px;
+                grid-template-columns: auto 1fr;
+                position: relative;
 
-            a {
-                display: block;
+                a {
+                    display: block;
+                }
+
+                &::after {
+                    content: ">";
+                    display: block;
+                }
             }
 
-            &::after {
-                content: ">";
+            &:last-of-type {
                 display: block;
+                padding-block: 4px;
+                width: 100%;
             }
-        }
-
-        &:last-of-type {
-            display: block;
-            padding-block: 4px;
-            width: 100%;
         }
     }
 }

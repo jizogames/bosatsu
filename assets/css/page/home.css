@@ -1,111 +1,113 @@
-.post-list {
-    display: grid;
-    row-gap: 16px;
-}
+@layer page {
+    .post-list {
+        display: grid;
+        row-gap: 16px;
+    }
 
-@scope (.post-list) {
-    .list-item {
-        font-size: 14px;
-        padding-inline: 8px;
+    @scope (.post-list) {
+        .list-item {
+            font-size: 14px;
+            padding-inline: 8px;
 
-        .list-body {
-            display: grid;
-            row-gap: 12px;
+            .list-body {
+                display: grid;
+                row-gap: 12px;
 
-            &:focus-visible {
-                outline: none;
+                &:focus-visible {
+                    outline: none;
 
-                .thumbnail {
-                    img {
-                        scale: 1.2;
-                    }
-                }
-            }
-
-            @media (any-hover: hover) {
-                &:hover {
                     .thumbnail {
                         img {
                             scale: 1.2;
                         }
                     }
                 }
-            }
-        }
-
-        .thumbnail {
-            aspect-ratio: 2 / 1;
-            border-radius: 16px;
-            overflow: hidden;
-
-            img {
-                object-fit: cover;
-                transition-duration: 0.3s;
-                transition-property: scale;
-                width: 100%;
-            }
-        }
-
-        h3 {
-            font-size: 18px;
-        }
-
-        .list-footer {
-            align-items: center;
-            border-top: 1px solid;
-            display: grid;
-            grid-auto-flow: column;
-            justify-content: space-between;
-            margin-top: 12px;
-            padding-block: 12px;
-
-            time {
-                color: #333333;
-            }
-        }
-
-        .categories {
-            display: grid;
-            gap: 8px;
-            grid-auto-flow: column;
-
-            a {
-                border: 1px solid;
-                border-radius: calc(infinity * 1px);
-                display: block;
-                overflow: hidden;
-                padding-block: 2px;
-                padding-inline: 12px;
-                position: relative;
-
-                &::after {
-                    background-color: #007b43;
-                    content: "";
-                    display: block;
-                    height: 100%;
-                    left: 0;
-                    position: absolute;
-                    scale: 0 1;
-                    top: 0;
-                    transform-origin: 0 0;
-                    transition-duration: 0.3s;
-                    transition-property: scale;
-                    width: 100%;
-                    z-index: var(--stack-background);
-                }
-
-                &:focus-visible {
-                    outline: none;
-
-                    &::after {
-                        scale: 1;
-                    }
-                }
 
                 @media (any-hover: hover) {
                     &:hover {
+                        .thumbnail {
+                            img {
+                                scale: 1.2;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .thumbnail {
+                aspect-ratio: 2 / 1;
+                border-radius: 16px;
+                overflow: hidden;
+
+                img {
+                    object-fit: cover;
+                    transition-duration: 0.3s;
+                    transition-property: scale;
+                    width: 100%;
+                }
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .list-footer {
+                align-items: center;
+                border-top: 1px solid;
+                display: grid;
+                grid-auto-flow: column;
+                justify-content: space-between;
+                margin-top: 12px;
+                padding-block: 12px;
+
+                time {
+                    color: #333333;
+                }
+            }
+
+            .categories {
+                display: grid;
+                gap: 8px;
+                grid-auto-flow: column;
+
+                a {
+                    border: 1px solid;
+                    border-radius: calc(infinity * 1px);
+                    display: block;
+                    overflow: hidden;
+                    padding-block: 2px;
+                    padding-inline: 12px;
+                    position: relative;
+
+                    &::after {
+                        background-color: #007b43;
+                        content: "";
+                        display: block;
+                        height: 100%;
+                        left: 0;
+                        position: absolute;
+                        scale: 0 1;
+                        top: 0;
+                        transform-origin: 0 0;
+                        transition-duration: 0.3s;
+                        transition-property: scale;
+                        width: 100%;
+                        z-index: var(--stack-background);
+                    }
+
+                    &:focus-visible {
+                        outline: none;
+
                         &::after {
                             scale: 1;
+                        }
+                    }
+
+                    @media (any-hover: hover) {
+                        &:hover {
+                            &::after {
+                                scale: 1;
+                            }
                         }
                     }
                 }

@@ -1,81 +1,83 @@
-.post {
-    margin-block: 5rem;
-}
-
-.post-header {
-    display: grid;
-    grid-template-areas:
-        "time"
-        "title"
-        "category";
-    padding-inline: 8px;
-}
-
-@scope (.post-header) {
-    .post-title {
-        font-size: 1.25rem;
-        grid-area: title;
+@layer page {
+    .post {
+        margin-block: 5rem;
     }
 
-    .categories {
-        grid-area: category;
+    .post-header {
+        display: grid;
+        grid-template-areas:
+            "time"
+            "title"
+            "category";
+        padding-inline: 8px;
     }
 
-    time {
-        color: #333333;
-        font-size: 14px;
-        grid-area: time;
-        text-align: right;
-    }
-}
+    @scope (.post-header) {
+        .post-title {
+            font-size: 1.25rem;
+            grid-area: title;
+        }
 
-@scope (.post) {
-    .thumbnail {
-        margin-block: 3rem;
-    }
-}
+        .categories {
+            grid-area: category;
+        }
 
-.post-body {
-    padding-inline: 8px;
-}
-
-@scope (.post-body) {
-    h2 {
-        font-size: 1.75rem;
-        margin-block: 2rem;
+        time {
+            color: #333333;
+            font-size: 14px;
+            grid-area: time;
+            text-align: right;
+        }
     }
 
-    p {
-        margin-block-end: 0.625rem;
+    @scope (.post) {
+        .thumbnail {
+            margin-block: 3rem;
+        }
     }
-}
 
-@scope (.post-footer) {
-    .tags {
-        display: flex;
-        gap: 4px;
-        flex-wrap: wrap;
+    .post-body {
+        padding-inline: 8px;
+    }
 
-        a {
-            background-color: #007b43;
-            clip-path: polygon(calc(100% - 16px) 0, 95% 50%, calc(100% - 16px) 100%, 0 100%, 0 0);
-            color: #ffffff;
-            display: block;
-            font-size: 0.875rem;
-            padding-inline: 0.75rem 2rem;
-            position: relative;
+    @scope (.post-body) {
+        h2 {
+            font-size: 1.75rem;
+            margin-block: 2rem;
+        }
 
-            &::after {
-                background-color: currentColor;
-                border-radius: 50%;
-                content: "";
+        p {
+            margin-block-end: 0.625rem;
+        }
+    }
+
+    @scope (.post-footer) {
+        .tags {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+
+            a {
+                background-color: #007b43;
+                clip-path: polygon(calc(100% - 16px) 0, 95% 50%, calc(100% - 16px) 100%, 0 100%, 0 0);
+                color: #ffffff;
                 display: block;
-                height: 4px;
-                position: absolute;
-                right: 12px;
-                top: 50%;
-                translate: 0 -50%;
-                width: 4px;
+                font-size: 0.875rem;
+                padding-inline: 0.75rem 2rem;
+                position: relative;
+
+                &::after {
+                    background-color: currentColor;
+                    border-radius: 50%;
+                    content: "";
+                    display: block;
+                    height: 4px;
+                    position: absolute;
+                    right: 12px;
+                    top: 50%;
+                    translate: 0 -50%;
+                    width: 4px;
+                }
             }
         }
     }

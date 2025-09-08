@@ -1,24 +1,26 @@
-.pagetop {
-    background-color: #007b43;
-    bottom: 0;
-    color: #ffffff;
-    display: block;
-    height: 64px;
-    opacity: 0;
-    padding: 8px;
-    position: fixed;
-    right: 0;
-    transition-duration: 0.3s;
-    transition-property: opacity, translate, visibility;
-    transform-origin: bottom right;
-    translate: 100% 0;
-    visibility: hidden;
-    width: 64px;
-    z-index: var(--stack-foreground);
+@layer object {
+    .pagetop {
+        background-color: #007b43;
+        bottom: 0;
+        color: #ffffff;
+        display: block;
+        height: 64px;
+        opacity: 0;
+        padding: 8px;
+        position: fixed;
+        right: 0;
+        transition-duration: 0.3s;
+        transition-property: opacity, translate, visibility;
+        transform-origin: bottom right;
+        translate: 100% 0;
+        visibility: hidden;
+        width: 64px;
+        z-index: var(--stack-foreground);
 
-    &:where(.scroll *) {
-        opacity: 1;
-        translate: 0;
-        visibility: visible;
+        &:where(.scroll *) {
+            opacity: 1;
+            translate: 0;
+            visibility: visible;
+        }
     }
 }
