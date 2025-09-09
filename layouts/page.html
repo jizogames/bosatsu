@@ -24,8 +24,13 @@
         {{ end }}
         {{ if eq .Type "posts" }}
             {{ if .TableOfContents }}
-                <div id="js-toc" class="toc">
-                    <h2>目次</h2>
+                <div class="toc">
+                    <header class="toc-header">
+                        <h2 data-en="Contents">目次</h2>
+                        <button type="button">
+                            <span>目次をひらく</span>
+                        </button>
+                    </header>
                     {{ .TableOfContents }}
                 </div>
             {{ end }}

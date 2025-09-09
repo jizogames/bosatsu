@@ -1,4 +1,4 @@
-@layer reset, base, layout, object, page;
+@layer reset, base, object, layout, page;
 
 @import "https://cdn.jsdelivr.net/npm/kiso.css@latest/kiso.css" layer(reset);
 

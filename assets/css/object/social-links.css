@@ -1,0 +1,44 @@
+@layer object {
+    .social-links {
+        --icon-x: url("../images/sns/x.svg");
+        --icon-instagram: url("../images/sns/instagram.svg");
+        --icon-github: url("../images/sns/github.svg");
+
+        column-gap: 1.5rem;
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: center;
+
+        a {
+            border-radius: 8px;
+            display: grid;
+            padding: 12px;
+            transition-duration: 0.3s;
+            transition-property: background-color, color;
+            width: 48px;
+
+            &::before {
+                aspect-ratio: 1;
+                background-color: currentColor;
+                content: "";
+                display: block;
+                height: auto;
+                mask: var(--icon) no-repeat center / contain;
+                width: 100%;
+            }   
+
+            &:focus-visible {
+                background-color: #007b43;
+                color: #ffffff;
+                outline: none;
+            }
+
+            @media (any-hover: hover) {
+                &:hover {
+                    background-color: #007b43;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
