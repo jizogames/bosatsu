@@ -1,14 +1,22 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-<button id="js-openDrawer" class="menu-button" type="button">
-    <span class="icon hamburger"></span>
+{{ with .Site.Params.logo }}
+    <h1 class="header-logo">
+        <a href="{{ "/" | relURL }}">
+            <img alt="{{ $.Site.Title }}" class="site-logo" width="192" height="48" src="{{ . | relURL }}">
+        </a>
+    </h1>
+{{ else }}
+    <h1 class="site-title" lang="en" translate="no"><a href="/">{{ .Site.Title }}</a></h1>
+{{ end }}
+<button id="js-openDrawer" class="open-drawer" type="button">
+    <span class="icon hamburger" aria-hidden="true"></span>
     <span class="label">MENU</span>
 </button>
 
-<dialog id="js-menuDrawer" class="menu-drawer" autofocus>
-    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-    <button id="js-closeDrawer" type="button" aria-labelledby="closeDrawerLabel">
-        <span class="icon cross"></span>
-        <span id="closeDrawerLabel" style="display: none;">メニューをとじる</span>
+<dialog id="js-menuDrawer" class="menu-drawer" aria-label="グローバルナビゲーション" closedby="any" autofocus>
+    <div class="drawer-inner">
+        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+    </div>
+    <button id="js-closeDrawer" class="close-drawer" type="button" aria-label="メニューをとじる">
+        <span class="icon cross" aria-hidden="true"></span>
     </button>
 </dialog>

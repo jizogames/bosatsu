@@ -1,0 +1,28 @@
+@layer layout {
+    .global-header {
+        animation: header-fix linear both;
+        animation-range: exit 0% exit 100%;
+        animation-timeline: view();
+        background-color: #000000;
+        border-radius: 0 0 32px 32px;
+        box-shadow: 0 4px 8px 4px rgb(255 255 255 / 0.3);
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+        margin-inline: 8px;
+        padding-inline: 8px;
+        position: fixed;
+        top: 0;
+        width: stretch;
+        z-index: var(--stack-foreground);
+    }
+
+    @keyframes header-fix {
+        to { 
+            border-radius: 0;
+            box-shadow: none;
+            margin-block: 0;
+            margin-inline: 0;
+        }
+    }
+}

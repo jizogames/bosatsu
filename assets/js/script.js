@@ -31,19 +31,17 @@ document.addEventListener( 'DOMContentLoaded', () => {
     /**
      * メニューを開閉する.
      */
-    const openDrawer = ( () => {
-        const drawer = document.getElementById( 'js-menuDrawer' );
-        const openButton = document.getElementById( 'js-openDrawer' );
-        const closeButton = document.getElementById( 'js-closeDrawer' );
+    const menuDrawer = document.getElementById( 'js-menuDrawer' );
+    const openDrawer = document.getElementById( 'js-openDrawer' );
+    const closeDrawer = document.getElementById( 'js-closeDrawer' );
 
-        openButton.addEventListener( 'click', () => {
-            drawer.showModal();
-        } );
+    openDrawer.addEventListener( 'click', () => {
+        menuDrawer.showModal();
+    } );
 
-        closeButton.addEventListener( 'click', () => {
-            drawer.close();
-        } );
-    } )();
+    closeDrawer.addEventListener( 'click', () => {
+        menuDrawer.close();
+    } );
 } );
 
 function getHeaderHeight( header ) {

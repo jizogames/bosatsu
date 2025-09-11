@@ -1,0 +1,60 @@
+@layer object {
+    .menu-drawer {
+        background-color: transparent;
+        margin-block-end: 0;
+        width: 100%;
+
+        &[open] {
+            display: grid;
+            grid-template-areas:
+                "button"
+                "inner";
+            
+                .main-menu {
+                    opacity: 1;
+
+                    @starting-style {
+                        opacity: 0;
+                    }
+                }
+        }
+
+        &::backdrop {
+            background-color: rgb(255 255 255 / 0.3);
+            opacity: 0;
+            transition-behavior: allow-discrete;
+            transition-duration: 0.3s;
+            transition-property: display, opacity;
+        }
+
+        &[open]::backdrop {
+            opacity: 1;
+
+            @starting-style {
+                opacity: 0;
+            }
+        }
+    }
+
+    .drawer-inner {
+        grid-area: inner;
+    }
+
+    @scope (.drawer-inner) {
+        .main-menu {
+            background-color: #007b43;
+            height: calc(100vh - var(--header-height));
+            transition-duration: 0.3s;
+            transition-property: opacity;
+        }
+    }
+
+    .close-drawer {
+        grid-area: button;
+    }
+}
+
+:root:has(dialog[open]) {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+}
