@@ -24,15 +24,12 @@
         {{ end }}
         {{ if eq .Type "posts" }}
             {{ if .TableOfContents }}
-                <div class="toc">
-                    <header class="toc-header">
+                <details class="toc" open>
+                    <summary class="toc-header">
                         <h2 data-en="Contents">目次</h2>
-                        <button type="button">
-                            <span>目次をひらく</span>
-                        </button>
-                    </header>
+                    </summary>
                     {{ .TableOfContents }}
-                </div>
+                </details>
             {{ end }}
         {{ end }}
         <div class="post-body">

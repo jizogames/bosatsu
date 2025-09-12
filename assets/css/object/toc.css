@@ -1,0 +1,29 @@
+@layer object {
+    .toc {
+        display: grid;
+        justify-items: end;
+        margin-block: 2.5rem;
+        margin-inline: auto 8px;
+        min-width: 50%;
+        padding-block: 0.5rem;
+        padding-inline: 0.5rem;
+        position: sticky;
+        top: var(--header-height);
+        width: fit-content;
+    }
+
+    .toc-header {
+        column-gap: 16px;
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+    }
+
+    @scope (.toc) {
+        nav {
+            background-color: #000;
+            padding-block: 1rem;
+            padding-inline: 1rem;
+        }
+    }
+}
